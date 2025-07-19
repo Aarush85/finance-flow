@@ -1,0 +1,106 @@
+import { useEffect, useState } from "react";
+import { Button } from "../components/Button";
+import { InputBox } from "../components/InputBox";
+import { NavBar } from "../components/NavBar";
+import axios from "axios";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
+
+export function UpdateExpensePage() {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [category, setCategory] = useState("Select a category");
+    const [title, setTitle] = useState("");
+    const [amount, setAmount] = useState(0);
+    const [date, setDate] = useState("");
+    const navigate = useNavigate();
+
+    const [searchParams] = useSearchParams();
+    const expenseId = searchParams.get("expenseId");
+    // console.log(expenseId);
+
+    useEffect(()=> {
+        const fetchExpense = async () => {
+            const response =await  axios.get("http://localhost:3000/api/expense/get?ExpenseId="+ expenseId , {
+                headers: {
+                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY1NDhmOGFiODU2MjkyZDM3MDQ3ZTYiLCJpYXQiOjE3NTE0NjgyODB9.6mzoLB11EB8oi370dpJbyfaM39KrsMx0SBIDZUkwFwg"
+                }
+            })
+
+            const expense = response.data.expense;
+
+            setTitle(expense.title);
+            setCategory(expense.category);
+            const formattedDate = expense.date.split('T')[0]; 
+            setDate(formattedDate);
+            // setDate(expense.date);
+            // setAmount(1000000);
+            setAmount(expense.amount);
+            
+        }
+
+        fetchExpense();
+    },[])
+
+    return <div className="">
+        <NavBar />
+        <div className="bg-slate-200 h-screen">
+            <div className="flex flex-col justify-center items-center pt-20">
+                <div className="bg-white h-max w-84 rounded-lg text-center px-5 p-2 pt-6 pb-4 shadow-lg">
+                    <div className="font-semibold text-3xl  pb-5">Update the Expense</div>
+
+                    <InputBox label={"Title"} placeholder={"Enter the title"} onChange={(e)=> setTitle(e.target.value)}  val={title}/>
+                    {/* <InputBox label={"Category"} placeholder={"Enter the category"} /> */}
+
+                    <div >
+                        <div className="text-left font-medium text-lg py-2">
+                            Category
+                        </div >
+                        <div className="flex  justify-between rounded-md w-full h-8 border border-gray-300 px-2 py-1 cursor-pointer hover:bg-gray-200" onClick={() => setDropdownOpen(!dropdownOpen)}>
+                            <button className="" >{category}
+                            </button>
+                            <span className="material-symbols-outlined focus:outline-none">
+                                keyboard_arrow_down
+                            </span>
+
+                        </div>
+
+                        {dropdownOpen && (
+                            <div className="absolute w-74 justify-center bg-white rounded-lg overflow-auto shadow-lg border border-gray-300 mt-1">
+                                <div className="hover:bg-gray-200 cursor-pointer" onClick={(e) => {setCategory("Food"); setDropdownOpen(!dropdownOpen)}}>Food</div>
+                                <div className="hover:bg-gray-200 cursor-pointer" onClick={(e) => {setCategory("Restaurant"); setDropdownOpen(!dropdownOpen)}}>Restaurant</div>
+                                <div className="hover:bg-gray-200 cursor-pointer" onClick={(e) => {setCategory("Leisure"); setDropdownOpen(!dropdownOpen)}}>Leisure</div>
+                            </div>
+                        )}
+                    </div>
+
+                    <div >
+                        <div className="text-left font-medium text-lg py-2">
+                            Date
+                        </div>
+                        {/* <input type="date" className="rounded-md w-full border border-gray-300 placeholder:font-medium placeholder:text-gray-300 px-2 py-1" placeholder={"Select the date"} onChange={http://localhost:3000/api/expense/get?ExpenseId=} value={date}/> */}
+
+                        <input type="date" className="rounded-md w-full border border-gray-300 placeholder:font-medium placeholder:text-gray-300 px-2 py-1" placeholder={"Select the date"} onChange={e => setDate(e.target.value)} value={date}/>                        
+                    </div>
+
+                    {/* <InputBox label={"Amount"} placeholder={"Enter the amount"} onChange={(e) => setAmount((parseInt)(e.target.value))} value={amount.toString()}/> */}
+                    <InputBox label={"Amount"} placeholder={"Enter the amount"} onChange={(e) => setAmount(parseInt(e.target.value, 10) || 0)}
+ val={amount}/>
+
+                    <Button label={"Update"} onClick={async ()=> {
+                        await axios.put("http://localhost:3000/api/expense/update?ExpenseId="+ expenseId, {
+                            title, category, date, amount
+                        }, {
+                            headers: {
+                                Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY1NDhmOGFiODU2MjkyZDM3MDQ3ZTYiLCJpYXQiOjE3NTE0NjgyODB9.6mzoLB11EB8oi370dpJbyfaM39KrsMx0SBIDZUkwFwg"
+                            }
+                        })
+
+                        alert("expense updated succefully");
+                        navigate("/expenses");
+
+                    }}/>
+                </div>
+            </div>
+        </div>
+    </div>
+}
