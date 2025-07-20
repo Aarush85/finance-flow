@@ -18,7 +18,7 @@ Video Walkthrough
 2. open the project folder in VS code or any other IDE you like.
 3. open two terminals side by side (use VS code if your IDE doesn't support this)
 4. firstly open terminal for backend folder by using `cd backend` cmd from the terminal opened at root directory of the folder
-5. use `npm install` cmd so that all the dependendencies needed for the project are installed
+5. use `npm install` cmd so that all the dependencies needed for the project are installed
 6. now use `node index.js` cmd.
 7. You may see `App running at port 3000` which shows that your backend is now running.
 8. Now, Moving on to the frontend part, first of all in another terminal (not same as backend) use `cd frontend` from root directory
