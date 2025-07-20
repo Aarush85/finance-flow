@@ -1,20 +1,20 @@
-# Finance Flow - Personal Finance Tracker using MERN
+# FinanceFlow - Personal Finance Tracker (MERN Stack)
 
-## This is a fullstack application which helps users to  track their incomes and expenses in concise way, such that the user makes well-informed decisions financially
+**FinanceFlow** is a full-stack web application that enables users to efficiently track their incomes and expenses, analyze spending habits, and make well-informed financial decisions.
 
-
-This is a fully functional personal finance tracker with following features:
-* Can add expenses/incomes based on category
-* Can see the expenses sorted by date in latest date first order
-* Can filter based on categories
-* can update/delete a particular expense by clicking on the three dots at rightmost part of the transaction you want to perform action on
+## Features
+- Add income and expense transactions by category
+- View all transactions sorted by latest date
+- Filter transactions based on categories
+- Edit or delete individual transactions via the context menu
+- AI-powered chatbot for assisting users in making financial decisions
 
 
 Video Walkthrough 
 `coming soon`
 
 ## How to run this project on your local machine
-1. clone this project
+1. Clone this project
 2. open the project folder in VS code or any other IDE you like.
 3. open two terminals side by side (use VS code if your IDE doesn't support this)
 4. firstly open terminal for backend folder by using `cd backend` cmd from the terminal opened at root directory of the folder
@@ -25,7 +25,7 @@ Video Walkthrough
 9. Again use `npm install` cmd so that dependencies for running frontend gets installed
 10. now use `npm run dev` cmd
 11. you  can see that the server is now running for frontend as well
-12. Navigate to `http:localhost:5173` now you can see that both frontend and backend are up and running
+12. Navigate to `http://localhost:5173` now you can see that both frontend and backend are up and running
 
 
 ## How to tweek this project for own uses
