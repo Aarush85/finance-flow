@@ -13,83 +13,38 @@ export function Dashboard() {
 
     const { totalIncome, totalExpense, totalSaving, loading , travel, groceries, rent, restaurant, coffee, streaming} = useSummarizeData();
 
-    // console.log("totalIncome : " + totalIncome);
-    // console.log("totalExpense : " + totalExpense);
-    // console.log("totalsaving : " + totalSaving);
-    // console.log("Travel : "+ travel);
-    // console.log("groceries : " + groceries);
-    // console.log("rent: "+ rent);
-    // console.log("restaurant: "+ restaurant);
-    // console.log("coffee: "+ coffee);
-    // console.log("Streaming: " + streaming);
 
-    return <div>
+  return <div>
         <NavBar />
 
-        <div className="grid grid-cols-10 pt-10">
-            <div className="col-span-5 mr-2 grid grid-cols-2 gap-8">
-                <div className=" bg-gray-100  ml-5 pl-5 rounded-lg shadow-md shadow-slate-300 h-fit">
-                    <div className="text-lg text-green-500 font-semibold mb-2">Income</div>
-                    <div className="text-lg font-bold mb-3">{totalIncome} ₹</div>
-                    {/* <div className="">cac</div> */}
-                </div>
-                <div className=" bg-gray-100  ml-5 pl-5 rounded-lg shadow-md shadow-slate-300 h-fit">
-                    <div className="text-lg text-red-500 font-semibold mb-2">Expenses</div>
-                    <div className="text-lg font-bold mb-3">{totalExpense} ₹</div>
-                    {/* <div className="">cac</div> */}
-                </div>
-                <div className=" bg-gray-100  ml-5 pl-5 rounded-lg shadow-md shadow-slate-300 h-fit">
-                    <div className="text-lg text-amber-500 font-semibold mb-2">Savings</div>
-                    <div className="text-lg font-bold mb-3">{totalSaving} ₹</div>
-                    {/* <div className="">cac</div> */}
-                </div>
-            </div>
-            <div className="pl-50 col-span-5 ">
-                <div className="h-60 w-72">
-                    <PieChart />
-                </div>
-            </div>
-            <br/>
-            {/* <div className="h-84 w-84"><BarChart/></div> */}
-
-            {/* <div className="flex pt-10 ml-50 "> */}
-                    <div className="col-span-5"><BarChart2/></div>
-                    <div className="col-span-4 grid grid-cols-3 mt-10 mr-15">
-                            <div className=" bg-gray-100  ml-5 pl-5 rounded-lg shadow-md shadow-slate-300 h-fit">
-                    <div className="text-lg text-green-500 font-semibold mb-2">Travel</div>
-                    <div className="text-lg font-bold mb-3">{travel} ₹</div>
-                    {/* <div className="">cac</div> */}
-                </div>
-                <div className=" bg-gray-100  ml-5 pl-5 rounded-lg shadow-md shadow-slate-300 h-fit">
-                    <div className="text-lg text-red-500 font-semibold mb-2">Groceries</div>
-                    <div className="text-lg font-bold mb-3">{groceries} ₹</div>
-                    {/* <div className="">cac</div> */}
-                </div>
-                <div className=" bg-gray-100  ml-5 pl-5 rounded-lg shadow-md shadow-slate-300 h-fit">
-                    <div className="text-lg text-amber-500 font-semibold mb-2">Rent</div>
-                    <div className="text-lg font-bold mb-3">{rent} ₹</div>
-                    {/* <div className="">cac</div> */}
-                </div>
-
-                <div className=" bg-gray-100  ml-5 pl-5 rounded-lg shadow-md shadow-slate-300 h-fit">
-                    <div className="text-lg text-green-500 font-semibold mb-2">Restaurant</div>
-                    <div className="text-lg font-bold mb-3">{restaurant} ₹</div>
-                    {/* <div className="">cac</div> */}
-                </div>
-                <div className=" bg-gray-100  ml-5 pl-5 rounded-lg shadow-md shadow-slate-300 h-fit">
-                    <div className="text-lg text-red-500 font-semibold mb-2">Coffee</div>
-                    <div className="text-lg font-bold mb-3">{coffee} ₹</div>
-                    {/* <div className="">cac</div> */}
-                </div>
-                <div className=" bg-gray-100  ml-5 pl-5 rounded-lg shadow-md shadow-slate-300 h-fit">
-                    <div className="text-lg text-amber-500 font-semibold mb-2">Streaming</div>
-                    <div className="text-lg font-bold mb-3">{streaming} ₹</div>
-                    {/* <div className="">cac</div> */}
-                </div>
-
+        <div className="bg-gray-300 h-screen flex">
+            <div className="bg-white h-72 w-96 mx-10 my-10 rounded-3xl shadow-lg px-5">
+                <div className="flex justify-between  py-5 ">
+                    <div className="font-medium">My Balance</div>
+                    <div className="flex">
+                        <div>All time</div>
+                        <span className="material-symbols-outlined pl-1">
+                            arrow_drop_down
+                        </span>
                     </div>
-            {/* </div> */}
+                </div>
+                <div className="pt-15  text-gray-400 text-sm ">Total balance</div>
+                <div className="pt-2 text-5xl font-semibold tracking-wide">₹{totalSaving}</div>
+
+                <div>
+                    <div className="flex pt-5 font-light">
+                        <div>Total earned last time</div>
+                        <div className="text-green-400 pl-2 font-medium">+₹14,500 </div>
+                    </div>
+                    <div className="flex pt-2 font-light">
+                        <div>Total bonus</div>
+                        <div className="text-green-400 pl-2 font-medium">+₹700 </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <Chatbot/>
+
+        <Chatbot />
+
     </div>
 }
