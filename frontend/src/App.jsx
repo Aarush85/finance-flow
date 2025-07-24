@@ -8,7 +8,7 @@ import { AddExpensePage } from './pages/AddExpensePage'
 import { UpdateExpensePage } from './pages/UpdateExpensePage'
 import { AddIncomePage } from './pages/AddIncomePage'
 import { PieChart } from './components/PieChart'
-import { BarChart } from './components/BarChart'
+import BarChart from './components/BarChart'
 import Chatbot from './components/Chatbot'
 
 function App() {

@@ -1,4 +1,4 @@
-import { BarChart } from "../components/BarChart";
+import BarChart from "../components/BarChart";
 import { BarChart2 } from "../components/BarChart2";
 import Chatbot from "../components/Chatbot";
 import { NavBar } from "../components/NavBar";
@@ -123,11 +123,14 @@ export function Dashboard() {
 
 
         </div>
-        <div className="bg-gray-300 h-screen/2 flex justify-between">
-               <div className="bg-white h-72 w-96 mx-10 rounded-3xl shadow-lg px-5">
+        <div className="bg-gray-300 h-screen/2 ">
+               {/* <div className="bg-white h-72 w-96 mx-10 rounded-3xl shadow-lg px-5">
 
 
-            </div>
+            </div> */}
+           <div className="w-120 h-60 bg-white rounded-xl border border-black ml-50">
+             <BarChart/>
+           </div>
            
         </div>
 
