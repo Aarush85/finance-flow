@@ -7,7 +7,6 @@ import {BrowserRouter, Routes, Route} from "react-router-dom"
 import { AddExpensePage } from './pages/AddExpensePage'
 import { UpdateExpensePage } from './pages/UpdateExpensePage'
 import { AddIncomePage } from './pages/AddIncomePage'
-import { PieChart } from './components/PieChart'
 import BarChart from './components/BarChart'
 import Chatbot from './components/Chatbot'
 
@@ -23,7 +22,6 @@ function App() {
             <Route path = "/addExpense" element= {<AddExpensePage/>}/>
             <Route path = "/addIncome" element= {<AddIncomePage/>}/>
             <Route path='/updateExpense' element= {<UpdateExpensePage/>}/>
-            <Route path='/pie' element= {<PieChart/>}/>
             <Route path='/bar' element= {<BarChart/>}/>
             <Route path='/chatbot' element= {<Chatbot/>}/>
 

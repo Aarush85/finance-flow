@@ -1,8 +1,6 @@
 import BarChart from "../components/BarChart";
-import { BarChart2 } from "../components/BarChart2";
 import Chatbot from "../components/Chatbot";
 import { NavBar } from "../components/NavBar";
-import { PieChart } from "../components/PieChart";
 import { useSummarizeData } from "../data/useSummarizeData";
 
 
